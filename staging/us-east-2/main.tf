@@ -1,10 +1,10 @@
 # Create a VPC
 resource "aws_vpc" "staging" {
- cidr_block = var.staging_vpc_cidr
- tags = {
-   Name = "staging-vpc"
-   Environment = "staging"
- }
+  cidr_block = var.staging_vpc_cidr
+  tags = {
+    Name        = "staging-vpc"
+    Environment = "staging"
+  }
 }
 
 resource "aws_internet_gateway" "staging" {
@@ -29,7 +29,7 @@ resource "aws_nat_gateway" "staging" {
 }
 
 resource "aws_eip" "natgw_eip" {
-  domain   = "vpc"
+  domain     = "vpc"
   depends_on = [aws_internet_gateway.staging]
   tags = {
     Name = "ngw_eip"
