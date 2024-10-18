@@ -35,7 +35,7 @@ locals {
 }
 
 ########  Private Subnet Locasls ##########
-locals{
+locals {
   private_subnets = {
     "priv-sub-1" = {
       cidr = cidrsubnet(local.vpc_cidr, 8, 10)
@@ -143,4 +143,29 @@ locals {
       description = "Allow All To Anywhere"
     }
   }
+}
+
+data "aws_acm_certificate" "alb_cert" {
+  domain      = "www.exam1.terence24labs.com"
+  types       = ["AMAZON_ISSUED"]
+  most_recent = true
+}
+
+####### Load Balancer Locals #########
+locals {
+  http_port             = "80"
+  http_protocol         = "HTTP"
+  https_port            = "443"
+  https_protocol        = "HTTPS"
+  ssl_policy            = "ELBSecurityPolicy-2016-08"
+  route53_target_health = false
+  dns_record_type       = "A"
+  certificate_arn = data.aws_acm_certificate.alb_cert.arn
+  alb_rule_condition = ["stage.terence24labs.com", "www.stage.terence24labs.com"]
+}
+locals {
+dns_name = "terence24labs.com"
+}
+locals {
+dns_zone = "Z0008572TUUBOKQDBF7Z"
 }

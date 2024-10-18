@@ -130,3 +130,61 @@ variable "bastion_sg_egress" {
     description = string
   }))
 }
+
+## TG alb HTTP nad HTTPS Ports ###
+variable "http_port" {
+  type = string
+  default = "80"
+}
+variable "http_protocol" {
+  description = "http protocol for the alb target group"
+  type = string
+  default = "HTTP"
+}
+
+variable "https_port" {
+  type = string
+  default = "443"
+}
+
+variable "https_protocol" {
+  type = string
+  default = "HTTPS"
+}
+
+## SSL variable ##
+variable "ssl_policy" {
+  type        = string
+}
+# Variable for the arn of the SSL certificate
+# variable "certificate_arn" {
+#   type = string
+# }
+
+variable "certificate_arn" {
+ type = string
+}
+
+variable "route53_target_health" {
+  type = bool
+}
+variable "alb_rule_condition" {
+  type = list(string)
+}
+# variable "aws_lb" {
+#   type = string
+# }
+
+# DNS Variables (Route 53)
+variable "dns_name" {
+  type        = string
+}
+variable "dns_zone" {
+  type = string
+}
+# DNS type ##
+variable "dns_record_type" {
+  description = "Route 53 domain type"
+  type = string
+  default = "A"
+}

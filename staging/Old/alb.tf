@@ -70,4 +70,4 @@ resource "aws_lb_listener_rule" "staging_web_rule" {
       values = ["exam1.terence24labs.com", "www.exam1.terence24labs.com"]
     }
   }
-}
+  }
