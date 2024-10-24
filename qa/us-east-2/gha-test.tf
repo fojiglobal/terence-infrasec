@@ -14,14 +14,14 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket         = "terry-cs2-terraform"
-    key            = "qa/terraform.tfstate"
-    region         = "us-east-2"
-    dynamodb_table = "cs2-infrasec-terraform"
-  }
+  # backend "s3" {
+  #   bucket         = "terry-cs2-terraform"
+  #   key            = "qa/terraform.tfstate"
+  #   region         = "us-east-2"
+  #   dynamodb_table = "cs2-infrasec-terraform"
+  # }
 }
-# Configure the AWS Provider
+#Configure the AWS Provider
 provider "aws" {
   region = "us-east-2"
 }
