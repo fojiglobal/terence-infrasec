@@ -20,6 +20,7 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   tfplan:
+    if: github.event_name == 'pull_request'
     defaults:
         run:
            shell: bash
@@ -109,8 +110,18 @@ jobs:
                 body: output
               })
             }
+terraform snyk-scan:
+    needs: tfplan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: scan terraform code for security misconfiguration. Resolve code Critical and High before Merge to Main
+        uses: snyk/actions/iac@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   tfapply:
-      needs: tfplan
+      if: github.event_name == 'push'
+      needs: terraform snyk-scan
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v4
