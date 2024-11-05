@@ -124,9 +124,9 @@ jobs:
           
   tfapply:
     if: always () && github.event_name == 'push'
-      needs: terraform-snyk-scan
-      runs-on: ubuntu-latest
-      steps:
+    needs: terraform-snyk-scan
+    runs-on: ubuntu-latest
+    steps:
         - uses: actions/checkout@v4
         - uses: hashicorp/setup-terraform@v3
 
