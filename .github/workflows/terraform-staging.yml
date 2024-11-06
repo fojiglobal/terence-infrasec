@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: staging Infrastructure provision using Terraform
+name: Staging Infrastructure Provision using Terraform
 
 # Controls when the workflow will run
 on:
