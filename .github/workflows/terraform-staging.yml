@@ -32,11 +32,11 @@
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         - name: Checkout Branch
-        - uses: actions/checkout@v4
+          uses: actions/checkout@v4
 
         # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file
         - name: Setup Terraform
-        - uses: hashicorp/setup-terraform@v3
+          uses: hashicorp/setup-terraform@v3
 
         - name: Terraform fmt
           id: fmt
@@ -123,8 +123,9 @@
           env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           with:
-            file: "./qa/us-east-2"
-            args: --severity-threshold=high
+            file: "./staging/us-east-2"
+            args: --severity-threshold=high    # only break pipeline for any 'high' vulnerabilities detected
+
             
     tfapply:
       if: always () && github.event_name == 'push'
@@ -133,11 +134,11 @@
       steps:
            # Checkout the repository to the GitHub Actions runner
           - name: checkout
-          - uses: actions/checkout@v4
+            uses: actions/checkout@v4
 
           # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file
           - name: Setup Terraform
-          - uses: hashicorp/setup-terraform@v3
+            uses: hashicorp/setup-terraform@v3
 
           - name: Terraform Init
             id: init
@@ -158,7 +159,7 @@
       steps:
           # Checkout the repository to the GitHub Actions runner
           - name: Checkout Branch
-          - uses: actions/checkout@v4
+            uses: actions/checkout@v4
 
           # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file
           - name: Setup Terraform
