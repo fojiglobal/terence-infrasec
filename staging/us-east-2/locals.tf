@@ -160,12 +160,12 @@ locals {
   ssl_policy            = "ELBSecurityPolicy-2016-08"
   route53_target_health = false
   dns_record_type       = "A"
-  certificate_arn = data.aws_acm_certificate.alb_cert.arn
-  alb_rule_condition = ["stage.terence24labs.com", "www.stage.terence24labs.com"]
+  certificate_arn       = data.aws_acm_certificate.alb_cert.arn
+  alb_rule_condition    = ["stage.terence24labs.com", "www.stage.terence24labs.com"]
 }
 locals {
-dns_name = "terence24labs.com"
+  dns_name = "terence24labs.com"
 }
 locals {
-dns_zone = "Z0008572TUUBOKQDBF7Z"
+  dns_zone = "Z0008572TUUBOKQDBF7Z"
 }
