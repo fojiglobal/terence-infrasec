@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Terraform Destroy Resources
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+env:
+    AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+defaults:
+  run:
+    shell: bash
+    working-directory: "./staging/us-east-2/"
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  tfplan:
+    ## Only Run TF Plan when a PR is opened
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+      - name: Destroy Terraform
+        run: terraform destroy --auto-approve
