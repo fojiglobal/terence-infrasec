@@ -12,6 +12,7 @@ module "staging" {
   private_sg_ingress    = local.private-sg-ingress
   bastion_sg_ingress    = local.bastion-sg-ingress
   bastion_sg_egress     = local.bastion-sg-egress
+  ami_id                = "ami-036841078a4b68e14"
   http_port             = local.http_port
   http_protocol         = local.http_protocol
   https_port            = local.https_port
