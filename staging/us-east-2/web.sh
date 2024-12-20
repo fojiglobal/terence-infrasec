@@ -33,7 +33,7 @@ sudo service docker enable
 sudo usermod -a -G docker cyber
 sudo chmod 666 /var/run/docker.sock
 
-# Run OWASP Juice Shop Container
+### Run OWASP Juice Shop Container
 
 docker pull bkimminich/juice-shop
 docker run -d -p 80:3000 bkimminich/juice-shop
