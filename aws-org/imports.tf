@@ -5,7 +5,7 @@ import {
   id = "o-e5ftwh98kn"
 }
 
-# Without this import function, it will go ahead to create a brand new otg
+### Without this import function, it will go ahead to create a brand new otg
 
 #### The Snadbox account was already been created using the console and we need to use this import statement to import it from the console into terraform
 import {
