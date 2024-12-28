@@ -20,10 +20,12 @@ module "staging" {
   ssl_policy            = local.ssl_policy
   route53_target_health = local.route53_target_health
   dns_record_type       = local.dns_record_type
-  dns_name              = local.dns_name
-  dns_zone              = local.dns_zone
-  certificate_arn       = local.certificate_arn
-  alb_rule_condition    = local.alb_rule_condition
+  #dns_name              = local.dns_name
+  dns_name           = "stage.terence24labs.com"
+  dns_zone           = local.dns_zone
+  certificate_arn    = local.certificate_arn
+  alb_rule_condition = ["stage.terence24labs.com", "www.stage.terence24labs.com"]
+  #alb_rule_condition    = local.alb_rule_condition
 }
 output "vpc_id" {
   value = module.staging.vpc_id
