@@ -135,7 +135,7 @@
       runs-on: ubuntu-latest
       steps:
            # Checkout the repository to the GitHub Actions runner
-          - name: checkout
+          - name: checkout Branch
             uses: actions/checkout@v4
 
           # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file
