@@ -24,7 +24,7 @@ module "staging" {
   dns_name           = "stage.terence24labs.com"
   dns_zone           = local.dns_zone
   certificate_arn    = local.certificate_arn
-  alb_rule_condition = ["stage.terence24labs.com", "www.stage.terence24labs.com"]
+  alb_rule_condition = ["stage.terence24labs.com", "www.stage.terence24labs"]
   #alb_rule_condition    = local.alb_rule_condition
 }
 output "vpc_id" {
